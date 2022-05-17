@@ -1,0 +1,96 @@
+<p-dialog [(visible)]="viewDialog"   [style]="{ width: '1200px',height: '100' }"
+          header="equipe Details" [modal]="true" styleClass="p-fluid">
+    <p-header><h2>Equipe Details</h2>  </p-header>
+    <ng-template pTemplate="content">
+        <div class="p-grid">
+            <div class="p-md-5">
+                <div class="p-field">
+                    <label for="ref">Refernce</label>
+                    <input
+                            type="text"
+                            pInputText
+                            id="ref"
+                            [(ngModel)]="selectedEquipe.ref"
+                            required
+                            autofocus
+                            [disabled]="viewDialog"
+                    />
+
+                </div>
+                <div class="p-field">
+                    <label for="ref">Code</label>
+                    <input
+                            type="text"
+                            pInputText
+                            id="code"
+                            [(ngModel)]="selectedEquipe.code"
+                            required
+                            autofocus
+                            [disabled]="viewDialog"
+                    />
+
+                </div>
+                <div class="p-field">
+                    <label for="libelle">libelle</label>
+                    <input
+                            type="text"
+                            pInputText
+                            id="libelle"
+                            [(ngModel)]="selectedEquipe.libelle"
+                            required
+                            autofocus
+                            [disabled]="viewDialog"
+                    />
+
+                </div>
+
+            </div>
+            <div class="p-md-7">
+                <div class="card" style="height: 300px">
+
+                    <p-table  [value]="membres" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+                              [(selection)]="membreEquipe" [rowHover]="true" dataKey="id"
+                              styleClass="p-datatable-customers"
+                              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                        <ng-template pTemplate="caption">
+                            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                                <h5 class="p-m-0">membres equipe</h5>
+                            </div>
+                        </ng-template>
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th>Code</th>
+                                <th>Reference</th>
+                                <th>libelle</th>
+                                <th>Membre equipe</th>
+                                <th>Chef equipe</th>
+
+
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-equipe >
+                            <tr>
+                                <td>{{selectedEquipe.code}}</td>
+                                <td>{{selectedEquipe.ref}}</td>
+                                <td>{{selectedEquipe.libelle}}</td>
+                                <td>{{equipe.collaborateur.codeCollaborateur}}</td>
+                                <td>{{selectedEquipe.chefEquipe.collaborateur.codeCollaborateur}}</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div></div></div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button
+                pButton
+                pRipple
+                label="Cancel"
+                icon="pi pi-times"
+                class="p-button-text"
+                (click)="hideViewDialog()"
+        ></button>
+
+
+    </ng-template>
+</p-dialog>

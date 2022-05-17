@@ -1,0 +1,73 @@
+<div class="p-grid">
+    <div class="p-col-12">
+
+        <p-toast></p-toast>
+
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+<!--                    <button pButton pRipple label="Suprimer" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>-->
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="items" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+                     [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Manage Intervention</h5>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                        <th pSortableColumn="code">code <p-sortIcon field="code"></p-sortIcon></th>
+                        <th pSortableColumn="libelle">libelle <p-sortIcon field="libelle"></p-sortIcon></th>
+                        <th pSortableColumn="dateDeProbleme">dateDeProbleme <p-sortIcon field="dateDeProbleme"></p-sortIcon></th>
+                        <th pSortableColumn="dateDebut">dateDebut <p-sortIcon field="dateDebut"></p-sortIcon></th>
+                        <th pSortableColumn="dateFin">dateFin <p-sortIcon field="dateFin"></p-sortIcon></th>
+                        <th>etat Intervention</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-intervention>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="intervention"></p-tableCheckbox>
+                        </td>
+                        <td>{{ intervention.code }}</td>
+                        <td>{{ intervention.libelle}}</td>
+                        <td>{{ intervention.dateDeProbleme}}</td>
+                        <td>{{ intervention.dateDebut }}</td>
+                        <td>{{ intervention.dateFin }}</td>
+                        <td>{{ intervention.etatIntervention.code }}</td>
+
+                        <td>
+                            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(intervention)"></button>
+                            <button pButton pRipple icon="pi pi-list" class="p-button-rounded p-button-info p-mr-2" (click)="view(intervention)"></button>
+                            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(intervention)"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{items ? items.length : 0 }} items.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+        <app-commande-create></app-commande-create>
+        <app-commande-edit></app-commande-edit>
+        <app-commande-view></app-commande-view>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>

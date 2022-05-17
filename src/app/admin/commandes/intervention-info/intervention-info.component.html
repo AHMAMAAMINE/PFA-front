@@ -1,0 +1,44 @@
+       <div class="p-card-body">
+        <div class="p-field">
+            <label for="code">Code</label>
+            <input type="text" pInputText id="code" [(ngModel)]="selected.code" required autofocus [disabled]="viewDialog || editDialog" />
+            <small class="p-invalid" *ngIf="submitted && !selected.code">code is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="libelle">Libelle</label>
+            <input type="text" pInputText id="libelle" [(ngModel)]="selected.libelle" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.libelle">libelle is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="description">Description</label>
+            <input type="text" pInputText id="description" [(ngModel)]="selected.description" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.description">description is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="dateDeProbleme">date De Probleme</label>
+<!--            <input type="date" pInputText id="dateDeProbleme" [(ngModel)]="selected.dateDeProbleme" required autofocus />-->
+            <input type="date" pInputText id="dateDeProbleme" [(ngModel)]="selected.dateDeProbleme" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.dateDeProbleme">dateDeProbleme is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="dateDebut">date Debut</label>
+            <input type="date" pInputText id="dateDebut" [(ngModel)]="selected.dateDebut" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.dateDebut">dateDebut is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="dateFin">date Fin</label>
+            <input type="date" pInputText id="dateFin" [(ngModel)]="selected.dateFin" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.dateFin">dateFin is required.</small>
+        </div>
+
+        <div class="p-field">
+            <label for="etatIntervention">code D etat Intervention</label>
+            <input type="text" pInputText id="etatIntervention" [(ngModel)]="selected.etatIntervention.code" required autofocus [disabled]="viewDialog"/>
+            <small class="p-invalid" *ngIf="submitted && !selected.etatIntervention.code">code d etat Intervention  is required.</small>
+        </div>
+
+        </div>
+
+
+

@@ -1,0 +1,16 @@
+<div class="layout-topbar" style="background-color: #0a3e41">
+  <a
+    href="#"
+    class="layout-menu-button layout-topbar-icon"
+    (click)="appMain.onMenuButtonClick($event)"
+  >
+    <i class="pi pi-bars"></i>
+  </a>
+
+  <div class="label" style="color: white; font-size: 3rem">
+    <div class="links">
+      <span class="logo" routerLink="/admin">GMAO</span>
+      <p-button style="float: right" routerLink="/" (click)="sedeconnecte()">Se deconnecter</p-button>
+    </div>
+  </div>
+</div>

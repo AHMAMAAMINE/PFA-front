@@ -1,0 +1,35 @@
+<p-panel header="Recherche des interventions" [toggleable]="true">
+
+    <div class="p-fluid p-formgrid p-grid">
+        <div class="p-field p-col">
+            <label for="total">Code</label>
+            <input type="text" pInputText id="code" [(ngModel)]="interventionVo.code" required autofocus/>
+        </div>
+        <div class="p-field p-col">
+            <label for="libelle">Libelle</label>
+            <input type="text" pInputText id="total" [(ngModel)]="interventionVo.libelle" required autofocus/>
+        </div>
+        <div class="p-field p-col">
+            <label for="dateDeProbleme">date De Probleme</label>
+            <p-calendar [showIcon]="true" inputId="icon" dateFormat="dd/mm/yy"
+    [(ngModel)]="date"></p-calendar>
+        </div>
+        <div class="p-field p-col">
+            <label for="dateDebut">date Debut</label>
+            <p-calendar [showIcon]="true" input Id="icon1" dateFormat="dd/mm/yy"
+    [(ngModel)]="date1"></p-calendar>
+        </div>
+        <div class="p-field p-col">
+            <label for="dateFin">date Fin</label>
+            <p-calendar [showIcon]="true" input Id="icon2" dateFormat="dd/mm/yy"
+    [(ngModel)]="date2"></p-calendar>
+        </div>
+    </div>
+    <div class="p-card-footer">
+        <button pButton pRipple type="button" label="Rechercher" icon="pi pi-search" class="p-mr-2 p-mb-2"
+                (click)="findByCriteria()"></button>
+        <button pButton pRipple type="button" label="Clear" icon="pi pi-search" class="p-mr-2 p-mb-2"
+                (click)="clear()"></button>
+    </div>
+   
+</p-panel>

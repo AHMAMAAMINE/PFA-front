@@ -1,0 +1,73 @@
+<div class="p-card" style="height: 1000px">
+<div class="p-card-body" [hidden]="viewDialog">
+    <div class="p-field">
+        <label for="">magasin</label>
+        <select class="form-control" pInputText (change)="isSelected($event)" [(ngModel)]="velues">
+            <option [value]=''>---select value-----</option>
+            <option *ngFor="let c of magasins" > {{c.reference}}</option>
+        </select>
+        <small class="p-invalid" *ngIf="submitted && !stock.magasin.reference">magasin is required.</small>
+    </div>
+    <div class="p-field">
+
+<!--        <p-dropdown  [options]="this.values" [ngModel]="material">-->
+
+<!--        </p-dropdown>-->
+        <label for="">material</label>
+            <select class="form-control" pInputText (change)="isSelecte($event)" [(ngModel)]="valeur">
+                <option [value]=''>---select value-----</option>
+                <option *ngFor="let c of materials" > {{c.reference}}</option>
+            </select>
+
+        <small class="p-invalid" *ngIf="submitted && !stock.material.reference">material is required.</small>
+    </div>
+    <div class="p-field">
+        <label for="qte">quantite</label>
+        <input type="number" pInputText id="qte" [(ngModel)]="stock.qte" required autofocus />
+        <small class="p-invalid" *ngIf="submitted && !stock.qte">qte is required.</small>
+    </div>
+    <div class="p-card-footer" [hidden]="editDialog">
+    <button pButton  label="Ajout"  class="p-button-text" (click)="evaluate()" >
+    </button>
+    </div>
+        <div class="p-card-footer" [hidden]="!editDialog">
+            <button pButton  label="edit"  class="p-button-text"   (click)="editliste(stock)"></button>
+        </div>
+</div>
+    <p-table  [value]="materialInterventions" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+              [(selection)]="selectes" [rowHover]="true" dataKey="id"
+              styleClass="p-datatable-customers"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">Stock Intervention</h5>
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>Magasin </th>
+                <th>Material</th>
+                <th>qte</th>
+                <th [hidden]="!editDialog"></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-stock>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="stock"></p-tableCheckbox>
+                </td>
+                <td>{{ stock.magasin.reference}}</td>
+                <td>{{ stock.material.reference}}</td>
+                <td>{{stock.qte}}</td>
+                <td [hidden]="!editDialog">
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-help p-mr-2" (click)="edit(stock)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(stock)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,12 @@
+.links {
+  display: flex;
+  & > span {
+    flex: 1 1 auto;
+    vertical-align: middle;
+    align-items: center;
+  }
+}
+span.logout {
+  text-align: right;
+  font-size: 1.5rem;
+}

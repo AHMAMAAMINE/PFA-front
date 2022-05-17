@@ -5,7 +5,9 @@
   "projects": {
     "supportportalapp": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {"@schematics/angular:component": {
+        "styleext": "scss"
+      }},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -24,7 +26,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -125,4 +127,5 @@
   "cli": {
     "analytics": "19451158-4938-459d-9f57-a149fbe21c4a"
   }
+
 }

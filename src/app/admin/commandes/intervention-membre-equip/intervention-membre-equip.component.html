@@ -1,0 +1,71 @@
+
+
+<div class="card" style="height: 1000px">
+    <div class="card-body" [hidden]="viewDialog">
+        <div class="form-group">
+
+            <label >Ref Equipe</label>
+            <select class="form-control" (change)="isSelecteds($event)" [(ngModel)]="values"  pInputText>
+                <option [value]=''>---select value-----</option>
+                <option *ngFor="let v of Equipe" [value]="v.ref"> {{v.ref}}</option>
+            </select>
+
+            <label>Membre Equip</label>
+            <select class="form-control" (change)="isSelected($event)" [(ngModel)]="value"  pInputText >
+                <option [value]=''>---select value-----</option>
+                <option *ngFor="let c of Membres" [value]="c.collaborateur.codeCollaborateur"> {{c.collaborateur.fullname}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="p-card-footer" [hidden]="editDialog || viewDialog">
+        <button pButton  label="Ajout"  class="p-button-text" [disabled]="isEmpty()"  (click)="saveCollaboraateur()"></button>
+    </div>
+    <div class="p-card-footer" [hidden]="!editDialog || viewDialog" >
+        <button pButton  label="edit"  class="p-button-text"   (click)="editliste(collaborateur)"></button>
+    </div>
+    <div class="card">
+
+
+        <p-table  [value]="MembresEquipe"  [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+                 [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                 styleClass="p-datatable-customers"
+                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                    <h5 class="p-m-0">Membre Equipe Intervention</h5>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width: 3rem">
+                        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                    </th>
+                    <th>Equipe </th>
+                    <th>membre equipe</th>
+                    <th [hidden]="!editDialog"></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-membresEquipe>
+                <tr>
+                    <td>
+                        <p-tableCheckbox [value]="membresEquipe"></p-tableCheckbox>
+                    </td>
+                    <td>{{ membresEquipe.equipe.ref}}</td>
+                    <td>{{ membresEquipe.membreEquipe.collaborateur.codeCollaborateur}}</td>
+
+
+
+                    <td [hidden]="!editDialog">
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-help p-mr-2" (click)="edit(membresEquipe)"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(membresEquipe)"></button>
+                    </td>
+                </tr>
+            </ng-template>
+<!--            <ng-template pTemplate="summary">-->
+<!--                <div class="p-d-flex p-ai-center p-jc-between">-->
+<!--                    In total there are {{items ? items.length : 0 }} items.-->
+<!--                </div>-->
+<!--            </ng-template>-->
+        </p-table>
+    </div>
+</div>

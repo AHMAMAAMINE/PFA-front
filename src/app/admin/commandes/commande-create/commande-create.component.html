@@ -1,0 +1,26 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '1000px'}"  [modal]="true" styleClass="p-fluid">
+    <p-header>Intervention <span style="position:relative;left: 350px; "> {{date  | date:'yyyy-MM-dd'}}</span> </p-header>
+    <ng-template pTemplate="content">
+
+        <p-tabView>
+            <p-tabPanel leftIcon="pi pi-info-circle" header="Information">
+                <app-intervention-info></app-intervention-info>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-users" header="membre Equip">
+                <app-intervention-membre-equip></app-intervention-membre-equip>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-cloud" header="Stock">
+                <app-intervention-stock></app-intervention-stock>
+            </p-tabPanel>
+           <p-tabPanel leftIcon="pi pi-comment" header="Consigne">
+                <app-intervention-conseil></app-intervention-conseil>
+            </p-tabPanel>
+
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="annuler" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="enregistre" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

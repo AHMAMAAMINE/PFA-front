@@ -1,0 +1,27 @@
+
+
+<p-dialog [(visible)]="viewDialog" [style]="{width: '1000px'}"  [modal]="true" styleClass="p-fluid">
+    <p-header>Intervention Details<span style="position:relative;left: 350px; "> </span> </p-header>
+    <ng-template pTemplate="content">
+
+        <p-tabView>
+            <p-tabPanel leftIcon="pi pi-info-circle" header="Information">
+                <app-intervention-info></app-intervention-info>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-users" header="membre Equip">
+                <app-intervention-membre-equip></app-intervention-membre-equip>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-cloud" header="Stock">
+                <app-intervention-stock></app-intervention-stock>
+            </p-tabPanel>
+            <p-tabPanel leftIcon="pi pi-comment" header="Consigne">
+                <app-intervention-conseil></app-intervention-conseil>
+            </p-tabPanel>
+
+        </p-tabView>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Fermer" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

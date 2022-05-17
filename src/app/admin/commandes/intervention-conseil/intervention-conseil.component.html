@@ -1,0 +1,59 @@
+<div class="card" style="height: 1000px">
+    <div class="card-body" [hidden]="viewDialog">
+        <div class="form-group">
+            <div class="p-field">
+                <label for="message">Message</label>
+                <textarea type="text" pInputText id="message" [(ngModel)]="conseilIntervention.message" required autofocus style="height: 100px"></textarea>
+                <small class="p-invalid" *ngIf="submitted && !conseilIntervention.message">message is required.</small>
+            </div>
+        </div>
+    </div>
+    <div class="p-card-footer" [hidden]="editDialog || viewDialog">
+        <button pButton  label="Ajout"  class="p-button-text" (click)="ajouter()"></button>
+    </div>
+    <div class="p-card-footer" [hidden]="!editDialog || viewDialog">
+        <button pButton  label="edit"  class="p-button-text"   (click)="editliste(conseilIntervention)"></button>
+    </div>
+    <p-table  [value]="conseilInterventions" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['reference','total','totalPaye']"
+              [(selection)]="selectes" [rowHover]="true" dataKey="id"
+              styleClass="p-datatable-customers"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                <h5 class="p-m-0">consigne Intervention</h5>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 3rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th>collaborateur name </th>
+                <th>Message</th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-conseil>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="conseil"></p-tableCheckbox>
+                </td>
+                <td>{{ conseil.collaborateur.codeCollaborateur}}</td>
+                <td>{{ conseil.message}}</td>
+                <td [hidden]="!editDialog">
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-help p-mr-2" (click)="edit(conseil)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(conseil)"></button>
+                </td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>
+
+
+
+
+
+
+
+
+
