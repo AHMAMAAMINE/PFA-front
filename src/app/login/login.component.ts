@@ -7,6 +7,7 @@ import { NotificationService } from '../service/notification.service';
 import { User } from '../model/user';
 import { NotificationType } from '../enum/notification-type.enum';
 import { HeaderType } from '../enum/header-type.enum';
+import {Role} from '../enum/role.enum';
 
 @Component({
   selector: 'app-login',
@@ -36,7 +37,11 @@ export class LoginComponent implements OnInit, OnDestroy {
           const token = response.headers.get(HeaderType.JWT_TOKEN);
           this.authenticationService.saveToken(token);
           this.authenticationService.addUserToLocalCache(response.body);
-          this.router.navigateByUrl('/user/management');
+          if ( this.authenticationService.getUserFromLocalCache().role === Role.ADMIN){
+            this.router.navigateByUrl('/admin/static');
+          }
+          console.log(this.authenticationService.getUserFromLocalCache().role)
+          // this.router.navigateByUrl('/user/management');
           this.showLoading = false;
         },
         (errorResponse: HttpErrorResponse) => {
