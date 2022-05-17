@@ -1,0 +1,95 @@
+<div class="p-grid layout-dashboard">
+  <div class="p-col-12 p-md-6 p-lg-3" routerLink="/chef-equipe/chef-equipe-conge">
+    <div class="overview-box card">
+      <div class="overview-box-value">{{demandesNum}}</div>
+      <div class="overview-box-title">DEMANDES CONGE</div>
+      <div class="overview-box-status">
+        Infos <i class="pi pi-arrow-circle-up"></i>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-3" routerLink="/chef-equipe/chef-equipe-tache">
+    <div class="overview-box card">
+      <div class="overview-box-value">{{tacheNum}}</div>
+      <div class="overview-box-title">TACHES </div>
+      <div class="overview-box-status">
+        Infos <i class="pi pi-arrow-circle-up"></i>
+      </div>
+    </div>
+  </div>
+  <div
+    class="p-col-12 p-md-6 p-lg-3"
+    routerLink="/chef-equipe/collaborateur"
+  >
+    <div class="overview-box card">
+      <div class="overview-box-value">{{collabNum}}</div>
+      <div class="overview-box-title">COLLABORATEURS</div>
+      <div class="overview-box-status">
+        Infos <i class="pi pi-arrow-circle-up"></i>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-3">
+    <div class="overview-box card">
+      <div class="overview-box-value">2</div>
+      <div class="overview-box-title">EQUIPES</div>
+      <div class="overview-box-status">
+        Infos <i class="pi pi-arrow-circle-up"></i>
+      </div>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <div class="timeline card card-w-title">
+      <h5>Demande Conge</h5>
+      <ul *ngFor="let item of items">
+        <li>
+          <i class="pi pi-users"></i>
+          <span class="timeline-event-title"> {{item.collaborateur.fullname}} </span>
+          <span class="timeline-event-time">{{time(item.dateDepart,item.dateFin)}} jours</span>
+          <p>{{item.messageCollaborateur}}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="p-col-12 p-md-6 p-lg-6">
+    <div class="timeline card card-w-title">
+      <h5>Taches</h5>
+      <ul *ngFor="let tache of taches">
+        <li>
+          <i class="pi pi-users"></i>
+          <span class="timeline-event-title"> {{tache.membreEquipe.collaborateur.fullname}} </span>
+          <span class="timeline-event-time">{{tache.etatTache ? 'Valide': 'Non Valide'}}</span>
+          <p>{{tache.description}}</p>
+        </li>
+
+<!--        <li>-->
+<!--          <i class="pi pi-users"></i>-->
+<!--          <span class="timeline-event-title"> Mehdi Hamdaoui </span>-->
+<!--          <span class="timeline-event-time">Non Valide</span>-->
+<!--          <p>-->
+<!--            Deviser le reseau en 3 sous reseaux et configurer les tables ip sans-->
+<!--            oublier de verifier connectivite-->
+<!--          </p>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <i class="pi pi-users"></i>-->
+<!--          <span class="timeline-event-title"> Saida Id-Younes</span>-->
+<!--          <span class="timeline-event-time">Non Valide</span>-->
+<!--          <p>Developper une Application Web de 4 pages</p>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <i class="pi pi-users"></i>-->
+<!--          <span class="timeline-event-title"> Ziad Hachmi</span>-->
+<!--          <span class="timeline-event-time">Non Valide</span>-->
+<!--          <p>Installation et configuration D'un serveur DHCP et DNS</p>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--          <i class="pi pi-users"></i>-->
+<!--          <span class="timeline-event-title">Nada Azouzi</span>-->
+<!--          <span class="timeline-event-time">Non Valide</span>-->
+<!--          <p>Installation Base de donnees MYSQL</p>-->
+<!--        </li>-->
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header="Les Détails de chaque demande" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-grid">
+            <div class="p-field p-sm-12">
+                <label for="code">Code</label>
+                <input type="text" pInputText id="code" [(ngModel)]="selected.code" disabled />
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-field p-sm-6">
+                <label for="etat">Etat</label>
+                <input  id="etat" [(ngModel)]="selected.etatDemandeConge"  disabled />
+            </div>
+            <div class="p-field p-sm-6">
+                <label for="collaborator">Collaborator</label>
+                <input  id="collaborator" [(ngModel)]="selected.collaborateur.fullname"  disabled />
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-field p-sm-6">
+                <label >Date de départ</label>
+                <input  [(ngModel)]="selected.dateDepart"  disabled />
+
+            </div>
+            <div class="p-field p-sm-6">
+                <label >Date Fin</label>
+                <input  [(ngModel)]="selected.dateFin"  disabled />
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-field p-sm-6">
+                <label>Msg Collaborateur</label>
+                <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.messageCollaborateur" disabled></textarea>
+
+            </div>
+            <div class="p-field p-sm-6">
+                <label >Commentaire Validateur</label>
+                <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.commentaireValidateur" disabled></textarea>
+            </div>
+        </div>
+
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

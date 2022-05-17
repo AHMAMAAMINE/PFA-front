@@ -1,0 +1,57 @@
+
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header=" Creer un demande de conge" [modal]="true" styleClass="p-fluid ">
+    <ng-template pTemplate="content" >
+        <div class="p-grid">
+
+            <div class="p-field p-sm-12">
+                <label for="code">Code</label>
+                <input type="text" pInputText id="code" [(ngModel)]="selected.code" required autofocus />
+                <small class="p-invalid" *ngIf="submitted && !selected.code">Code is required.</small>
+            </div>
+            <div class="p-field p-sm-6">
+                <label for="dateDepart">Date début</label>
+                <input type="date" pInputText id="dateDepart" [(ngModel)]="selected.dateDepart" required autofocus />
+                <small class="p-invalid" *ngIf="submitted && !selected.dateDepart">date is required.</small>
+            </div>
+            <div class="p-field p-sm-6">
+                <label for="dateFin">Date Fin</label>
+                <input type="date" pInputText id="dateFin" [(ngModel)]="selected.dateFin" required autofocus />
+                <small class="p-invalid" *ngIf="submitted && !selected.dateFin">date is required.</small>
+            </div>
+        </div>
+        <div class="p-grid">
+            <div class="p-field p-sm-12">
+                <label>Ecrire un Message</label>
+                <textarea rows="5" cols="40" pInputTextarea autoResize="autoResize" [(ngModel)]="selected.messageCollaborateur"></textarea>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text" (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Créer" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

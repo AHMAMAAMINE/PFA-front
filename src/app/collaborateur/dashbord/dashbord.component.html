@@ -1,0 +1,54 @@
+<div class="p-grid layout-dashboard">
+  <div class="p-col-12 p-xl-8">
+    <div class="card card-w-title">
+      <h5>Calendier</h5>
+      <p-fullCalendar
+        [events]="events"
+        [options]="fullcalendarOptions"
+      ></p-fullCalendar>
+    </div>
+  </div>
+  <div class="p-col-12 p-lg-4">
+    <div class="card card-w-title">
+      <h5>Taches</h5>
+    </div>
+    <div class="overview-box card">
+      <p-accordion [multiple]="true" *ngFor="let i of vos">
+        <p-accordionTab header="{{ i.libelle }}">
+          <div class="card card-w-title tasks">
+            <h5>Taches</h5>
+            <p>
+              Vous avez <span class="task-highlight">Complete</span>
+              {{ num1 }} taches parmi {{ vos.length }}.
+            </p>
+            <p-progressBar [value]="pourcentage * 100"></p-progressBar>
+            <ul *ngFor="let j of i.taches">
+              <li>
+                <p-checkbox
+                  (click)="completerTache(j.code.toString())"
+                  [(ngModel)]="j.etatTache"
+                  [binary]="j.etatTache"
+                ></p-checkbox>
+                <span>{{ j.description }}</span>
+              </li>
+            </ul>
+          </div>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
+
+    <div class="p-col-12 p-lg-12" style="padding: 0; margin-top: 10px">
+      <div class="timeline card card-w-title">
+        <h5>Conciels</h5>
+        <ul >
+          <li *ngFor="let c of conciels.slice(0,5);index as i">
+            <i class="pi pi-users"></i>
+            <span class="timeline-event-title">{{c.collaborateur.fullname}}</span>
+            <span class="timeline-event-time">{{c.dateDeMessage}}</span>
+            <p>{{c.message}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

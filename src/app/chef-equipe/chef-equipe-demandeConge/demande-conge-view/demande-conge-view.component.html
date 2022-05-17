@@ -1,0 +1,43 @@
+<p-dialog [(visible)]="viewDialog" [style]="{width: '450px'}" header=" Create a new request" [modal]="true" styleClass="p-fluid ">
+    <ng-template pTemplate="content" >
+        <div>
+            <label>Code congee</label>
+            <input type="text"  disabled pInputTextarea autoResize="autoResize" [(ngModel)]="selected.code">
+        </div>
+        <div class="p-grid">
+
+
+            <div class="p-field p-sm-12">
+                <label>collaborateur</label>
+                <input class="form-control"  [(ngModel)]="selected.collaborateur.fullname" disabled pInputText>
+
+
+
+            </div>
+            <div class="p-field p-sm-12">
+                <label>Message  Collaborateur</label>
+                <textarea rows="5" cols="30" pInputTextarea autoResize="autoResize" disabled [(ngModel)]="selected.messageCollaborateur"></textarea>
+            </div>
+        </div>
+
+        <div class="p-grid">
+            <div class="p-field p-sm-6">
+                <label for="dateDepart">Date Départ</label>
+                <input type="date" pInputText id="dateDepart" disabled [(ngModel)]="selected.dateDepart" required autofocus />
+            </div>
+            <div class="p-field p-sm-6">
+                <label for="dateFin">Date Fin</label>
+                <input type="date" pInputText id="dateFin" disabled [(ngModel)]="selected.dateFin" required autofocus />
+            </div>
+        </div>
+        <td>
+            <span [hidden]="!isvalide(selected.etatDemandeConge)"><button pButton pRipple icon="pi pi-check"  class="p-button-rounded p-button-success p-mr-2" ></button></span>
+            <span [hidden]="isvalides(selected.etatDemandeConge)"><button pButton pRipple icon="pi pi-times" class="p-button-rounded p-button-danger p-mr-2" ></button></span>
+        </td>
+
+
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideViewDialog()"></button>
+    </ng-template>
+</p-dialog>

@@ -1,0 +1,48 @@
+<p-dialog [(visible)]="createDialog" [style]="{width: '450px'}" header="Créer une nouvelle tache" [modal]="true"
+          styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-grid">
+            <div class="p-field p-sm-6">
+<!--                <div class="p-field">-->
+<!--                    <label for="libelle">Libelle</label>-->
+<!--                    <input type="text" pInputText id="libelle" [(ngModel)]="selected.intervention.code" required autofocus/>-->
+<!--                    <small class="p-invalid" *ngIf="submitted && !selected.intervention.code">libelle is required.</small>-->
+<!--                </div>-->
+                <div class="p-field">
+                    <label for="code">Code</label>
+                    <input type="text" pInputText id="code" [(ngModel)]="selected.code" required autofocus/>
+                    <small class="p-invalid" *ngIf="submitted && !selected.code">code is required.</small>
+                </div>
+            </div>
+            <div class="p-field p-col">
+                <label for="descrip">Description</label>
+                <textarea id="descrip" [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize"
+                          [(ngModel)]="selected.description">
+                </textarea>
+            </div>
+        </div>
+        <div class="p-field">
+            <label>Membre Equip</label>
+            <select class="form-control" (change)="isSelected($event)" pInputText>
+                <option *ngFor="let c of membres" [value]="c.collaborateur.codeCollaborateur">
+                    {{ c.collaborateur.fullname }}
+                </option>
+            </select>
+        </div>
+<!--        <div class="p-grid">-->
+<!--            <div class="p-field p-sm-6">-->
+<!--                <label for="datedemarre">Date</label>-->
+<!--                <input type="date" pInputText id="datedemarre" [(ngModel)]="selected.date" required-->
+<!--                       autofocus/>-->
+<!--                <small class="p-invalid" *ngIf="submitted && !selected.date">date is required.</small>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Annuler" icon="pi pi-times" class="p-button-text"
+                (click)="hideCreateDialog()"></button>
+        <button pButton pRipple label="Enregistrer" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

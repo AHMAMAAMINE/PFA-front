@@ -1,0 +1,77 @@
+<p-dialog
+  [(visible)]="createDialog"
+  [style]="{ width: '450px' }"
+  header=" Collaborateur Details"
+  [modal]="true"
+  styleClass="p-fluid "
+>
+  <ng-template pTemplate="content">
+    <div class="p-grid">
+      <div class="p-field p-sm-6">
+        <label for="code">Code</label>
+        <input
+          type="text"
+          pInputText
+          id="code"
+          [(ngModel)]="collaborateur.codeCollaborateur"
+          required
+          autofocus
+        />
+        <small
+          class="p-invalid"
+          *ngIf="submitted && !collaborateur.codeCollaborateur"
+        ></small>
+      </div>
+      <div class="p-field p-sm-6">
+        <label>nom et prenom</label>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="collaborateur.fullname"
+          required
+          autofocus
+        />
+      </div>
+    </div>
+    <div class="p-grid">
+      <div class="p-field p-sm-6">
+        <label>email</label>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="collaborateur.email"
+          required
+          autofocus
+        />
+      </div>
+      <div class="p-field p-sm-6">
+        <label>phone</label>
+        <input
+          type="text"
+          pInputText
+          [(ngModel)]="collaborateur.phone"
+          required
+          autofocus
+        />
+      </div>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button
+      pButton
+      pRipple
+      label="Cancel"
+      icon="pi pi-times"
+      class="p-button-text"
+      (click)="hideCreateDialog()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      label="Save"
+      icon="pi pi-check"
+      class="p-button-text"
+      (click)="save()"
+    ></button>
+  </ng-template>
+</p-dialog>

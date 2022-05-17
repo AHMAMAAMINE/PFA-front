@@ -1,0 +1,126 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <p-toast></p-toast>
+    <div class="card">
+      <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+          <button
+            pButton
+            pRipple
+            label="Nouveau"
+            icon="pi pi-plus"
+            class="p-button-success p-mr-2 p-mb-2"
+            (click)="openCreate()"
+          ></button>
+          <!-- <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>-->
+        </ng-template>
+
+        <ng-template pTemplate="right">
+          <p-fileUpload
+            mode="basic"
+            accept="image/*"
+            [maxFileSize]="1000000"
+            label="Import"
+            chooseLabel="Import"
+            class="p-mr-2 p-mb-2 p-d-inline-block"
+          ></p-fileUpload>
+          <button
+            pButton
+            pRipple
+            label="Export"
+            icon="pi pi-upload"
+            class="p-button-help p-mb-2"
+            (click)="dt.exportCSV()"
+          ></button>
+        </ng-template>
+      </p-toolbar>
+
+      <p-table
+        #dt
+        [value]="items"
+        [columns]="cols"
+        [rows]="4"
+        [paginator]="true"
+        [globalFilterFields]="[
+          'code',
+          'collaborateur',
+          'dateDepart',
+          'dateFin',
+          'etatDemandeConfeLibelle'
+        ]"
+        [(selection)]="selectes"
+        [rowHover]="true"
+        dataKey="id"
+        styleClass="p-datatable-customers"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true"
+      >
+        <ng-template pTemplate="caption">
+          <div
+            class="
+              p-d-flex p-flex-column p-flex-md-row p-jc-md-between
+              table-header
+            "
+          >
+            <h5 class="p-m-0">Votre Demandes</h5>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th style="width: 3rem">
+              <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+            </th>
+            <!--  <th pSortableColumn="code">Code<p-sortIcon field="code"></p-sortIcon></th>-->
+            <th pSortableColumn="code">
+              code<p-sortIcon field="code"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateDepart">
+              Date départ <p-sortIcon field="dateDepart"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateFin">
+              Date fin <p-sortIcon field="dateFin"></p-sortIcon>
+            </th>
+            <th pSortableColumn="message">
+              message <p-sortIcon field="message"></p-sortIcon>
+            </th>
+            <th pSortableColumn="message">
+              etat de conge <p-sortIcon field="message"></p-sortIcon>
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-demandeConge>
+          <tr>
+            <td>
+              <p-tableCheckbox [value]="demandeConge"></p-tableCheckbox>
+            </td>
+            <!-- <td>{{demandeConge.code}}</td>-->
+            <td>{{ demandeConge.code }}</td>
+            <td>{{ demandeConge.dateDepart }}</td>
+            <td>{{ demandeConge.dateFin }}</td>
+            <td>{{ demandeConge.messageCollaborateur }}</td>
+            <td>
+              <button
+                pButton
+                pRipple
+                icon="pi pi-list"
+                class="p-button-rounded p-button-info p-mr-2"
+                [style.background-color]="view(demandeConge)"
+                (click)="show(demandeConge)"
+              ></button>
+              <!--<button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="delete(demandeConge)"></button>-->
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{ items ? items.length : 0 }} items.
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <app-collaborateur-demande-conge-create></app-collaborateur-demande-conge-create>
+    <app-collaborateur-demande-conge-view></app-collaborateur-demande-conge-view>
+    <p-confirmDialog [style]="{ width: '450px' }"></p-confirmDialog>
+  </div>
+</div>

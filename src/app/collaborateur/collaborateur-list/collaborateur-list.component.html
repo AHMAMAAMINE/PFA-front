@@ -1,0 +1,62 @@
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-toast></p-toast>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="Nouveau" icon="pi pi-plus" class="p-button-success p-mr-2 p-mb-2" (click)="openCreate()"></button>
+                   <!-- <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger p-mb-2" (click)="deleteMultiple()" [disabled]="!selectes || !selectes.length"></button>-->
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <button pButton pRipple label="Export" icon="pi pi-upload" class="p-button-help p-mb-2" (click)="dt.exportCSV()"></button>
+                </ng-template>
+            </p-toolbar>
+
+            <p-table #dt [value]="collaborateurs" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['code','collaborateur','dateDepart','dateFin','etatDemandeConfeLibelle']"
+                     [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                     styleClass="p-datatable-customers"
+                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex p-flex-column p-flex-md-row p-jc-md-between table-header">
+                        <h5 class="p-m-0">Liste Collaborateur</h5>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 3rem">
+                            <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                        </th>
+                      <!--  <th pSortableColumn="code">Code<p-sortIcon field="code"></p-sortIcon></th>-->
+                        <th pSortableColumn="collaborateur">Code<p-sortIcon field="collaborateur"></p-sortIcon></th>
+                        <th pSortableColumn="collaborateur">Nom et Prenom<p-sortIcon field="collaborateur"></p-sortIcon></th>
+                        <th pSortableColumn="collaborateur">Email<p-sortIcon field="collaborateur"></p-sortIcon></th>
+                        <th pSortableColumn="collaborateur">Telephone<p-sortIcon field="collaborateur"></p-sortIcon></th>
+
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-collaborateur>
+                    <tr>
+                        <td>
+                            <p-tableCheckbox [value]="collaborateur"></p-tableCheckbox>
+                        </td>
+                        <td>{{collaborateur.codeCollaborateur}}</td>
+                        <td>{{collaborateur.fullname}}</td>
+                        <td>{{collaborateur.email}}</td>
+                        <td>{{collaborateur.phone}}</td>
+
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="summary">
+                    <div class="p-d-flex p-ai-center p-jc-between">
+                        In total there are {{collaborateurs ? collaborateurs.length : 0 }} collaborateurs.
+                    </div>
+                </ng-template>
+            </p-table>
+        </div>
+
+      <app-collaborateur-create></app-collaborateur-create>
+        <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+</div>
