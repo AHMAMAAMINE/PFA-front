@@ -160,4 +160,7 @@ export class CollaborateurService {
   public findByLogin(login: string): Observable<Collaborateur>{
     return this._http.get<Collaborateur>(this.url + '/login/' + login);
   }
+ public findByUserUsername(Username:string):Observable<Collaborateur>{
+    return this._http.get<Collaborateur>(this.url+'/login/'+Username);
+ }
   }

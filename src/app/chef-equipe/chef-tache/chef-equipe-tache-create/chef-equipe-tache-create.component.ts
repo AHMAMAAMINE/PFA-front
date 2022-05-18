@@ -8,6 +8,12 @@ import {EtatTacheService} from '../../../service/etat-tache.service';
 import {EquipesService} from '../../../service/equipes.service';
 import {ChefEquipeService} from '../../../service/chef-equipe.service';
 import {UserService} from '../../../service/user.service';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {Collaborateur} from '../../../model/collaborateur.model';
+import {MembreEquipe} from '../../../model/membre-equipe.model';
+import {Intervention} from '../../../model/intervention.model';
+import {TacheIntervention} from '../../../model/tache-intervention.model';
 
 
 @Component({
@@ -24,22 +30,27 @@ export class ChefEquipeTacheCreateComponent implements OnInit {
               private etatTacheService: EtatTacheService,
               private equipeService: EquipesService,
               private chefEquipeService: ChefEquipeService,
-              private datePipe: DatePipe, private userService: UserService
+              private datePipe: DatePipe,
+              private userService: UserService,
+              private authenticationService: AuthenticationService,
+              private colaborateurService:CollaborateurService
               ) {
   }
 
   ngOnInit(): void {
-    this.interventionService.findByCodeChef(this.User.collaborateur.codeCollaborateur).subscribe(data => this.intervention = data.intervention);
-    this.equipeService.findByCodeCollaborateur(this.User.collaborateur.codeCollaborateur).subscribe(data => this.membres = data.membres);
+    this.colaborateurService.findByUserUsername(this.authenticationService.getUserFromLocalCache().username).subscribe(data => this.Collaborateur=data);
+    this.interventionService.findByCodeChef(this.Collaborateur.codeCollaborateur).subscribe(data => this.intervention = data.intervention);
+    this.equipeService.findByCodeCollaborateur(this.Collaborateur.codeCollaborateur).subscribe(data => this.membres = data.membres);
     // this.membres.splice()
   }
-  get User(): User {
-    return this.userService.User;
+  get Collaborateur():Collaborateur{
+    return this.colaborateurService.collaborateur;
+  }
+  set Collaborateur(collaborateur:Collaborateur){
+    this.colaborateurService.collaborateur=collaborateur;
   }
 
-  set User(value: User) {
-    this.userService.User = value;
-  }
+
 
 
   get membres(): Array<MembreEquipe> {
