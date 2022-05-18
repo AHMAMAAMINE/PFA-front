@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {DemandeCongeService} from '../../../service/demande-conge.service';
 import {MessageService} from 'primeng/api';
-import {CollaborateurService} from '../../../../controller/service/collaborateur.service';
-import {EtatDemandeConge} from '../../../../controller/model/etat-demande-conge.model';
-import {Collaborateur} from '../../../../controller/model/collaborateur.model';
-import {DemandeConge} from '../../../../controller/model/demande-conge.model';
-import {EtatDemandeCongeService} from '../../../../controller/service/etat-demande-conge.service';
-import {UserService} from '../../../../controller/service/user.service';
-import {User} from '../../../../controller/model/user.model';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {EtatDemandeCongeService} from '../../../service/etat-demande-conge.service';
+import {UserComponent} from '../../../user/user.component';
+import {DemandeConge} from '../../../model/demande-conge.model';
+import {Collaborateur} from '../../../model/collaborateur.model';
+import {UserService} from '../../../service/user.service';
+import {AuthenticationGuard} from '../../../guard/authentication.guard';
+import {AuthenticationService} from '../../../service/authentication.service';
+import {EtatDemandeConge} from '../../../model/etat-demande-conge.model';
+
 
 @Component({
   selector: 'app-collaborateur-demande-conge-create',
@@ -20,9 +23,12 @@ export class CollaborateurDemandeCongeCreateComponent implements OnInit {
               private messageService: MessageService,
               private collaborateurService: CollaborateurService,
               private etatDemandeCongeService: EtatDemandeCongeService,
-              private userService: UserService) { }
+              private User:AuthenticationService,
+              private userService: UserComponent) { }
 
   ngOnInit(): void {
+    this.collaborateurService.findByUserUsername(this.User.getUserFromLocalCache().username)
+      .subscribe(data=>this.collaborateur=data);
       this.demandeCongeService.findByCollaborateur(localStorage.getItem('codeCollaborateur')).subscribe(data => this.items = data);
   }
 
@@ -35,7 +41,7 @@ export class CollaborateurDemandeCongeCreateComponent implements OnInit {
     this.submitted = true;
 
     if (this.selected.code.trim()) {
-      this.selected.collaborateur.codeCollaborateur = this.collaborateur.collaborateur.codeCollaborateur;
+      this.selected.collaborateur.codeCollaborateur = this.collaborateur.codeCollaborateur;
       // this.collaborateurService.signin().subscribe(data=>this.v=);
       this.demandeCongeService.items.push(this.selected);
       this.demandeCongeService.save().subscribe(data => {
@@ -90,12 +96,12 @@ export class CollaborateurDemandeCongeCreateComponent implements OnInit {
   set selectes(value: Array<Collaborateur>) {
     this.collaborateurService.selectes = value;
   }
-  get collaborateur(): User {
-    return this.userService.User;
+  get collaborateur(): Collaborateur {
+    return this.collaborateurService.collaborateur;
   }
 
-  set collaborateur(value: User){
-    this.userService.User = value;
+  set collaborateur(value: Collaborateur){
+    this.collaborateurService.collaborateur = value;
   }
   get collaborateurs(): Array<Collaborateur> {
     return this.collaborateurService.collaborateurs;

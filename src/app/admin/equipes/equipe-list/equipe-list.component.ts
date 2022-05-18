@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Equipe } from 'src/app/controller/model/equipe.model';
-import { EquipesService } from 'src/app/controller/service/equipes.service';
-import {MembreEquipe} from '../../../../controller/model/membre-equipe.model';
+import {EquipesService} from '../../../service/equipes.service';
+import {Equipe} from '../../../model/equipe.model';
+import {MembreEquipe} from '../../../model/membre-equipe.model';
+
 
 @Component({
   selector: 'app-equipe-list',

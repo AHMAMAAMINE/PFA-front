@@ -3,8 +3,8 @@ import {NavigationEnd, Router} from '@angular/router';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
-import {MenuService} from './../../../controller/service/app.menu.service';
 import {CollaborateurMainComponent} from '../collaborateur-main/collaborateur-main.component';
+import {MenuService} from '../../service/app.menu.service';
 
 @Component({
     /* tslint:disable:component-selector */
@@ -86,7 +86,8 @@ export class CollaborateurMenuItemComponent implements OnInit, OnDestroy {
 
     key: string;
 
-    constructor(public appMain: CollaborateurMainComponent, public router: Router, private cd: ChangeDetectorRef, private menuService: MenuService) {
+    constructor(public appMain: CollaborateurMainComponent, public router: Router,
+                private cd: ChangeDetectorRef, private menuService: MenuService) {
         this.menuSourceSubscription = this.menuService.menuSource$.subscribe(key => {
             // deactivate current active menu
             if (this.active && this.key !== key && key.indexOf(this.key) !== 0) {

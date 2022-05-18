@@ -147,8 +147,7 @@ import {CollaborateurMenuComponent} from './collaborateur/collaborateur-menu/col
 import {CollaborateurRightMenuComponent} from './collaborateur/collaborateur-right-menu/collaborateur-right-menu.component';
 import {CollaborateurTopBarComponent} from './collaborateur/collaborateur-top-bar/collaborateur-top-bar.component';
 import {CollaborateurMainComponent} from './collaborateur/collaborateur-main/collaborateur-main.component';
-import {HomePageComponent} from './home/home-page/home-page.component';
-import {HomeComponent} from './home/home.component';
+
 import {
   CollaborateurDemandeCongeViewComponent
 } from './collaborateur/collaborateur-demande-conge/collaborateur-demande-conge-view/collaborateur-demande-conge-view.component';
@@ -195,8 +194,6 @@ import {EquipesComponent} from './admin/equipes/equipes.component';
 
 
     CollaborateurDemandeCongeViewComponent,
-    HomeComponent,
-    HomePageComponent,
     CollaborateurMenuComponent,
     CollaborateurComponent,
     CollaborateurMainComponent,

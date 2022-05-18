@@ -1,12 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { MessageService } from "primeng/api";
-import { Equipe } from "src/app/controller/model/equipe.model";
-import { EquipesService } from "src/app/controller/service/equipes.service";
-import { MembreEquipe } from "../../../../controller/model/membre-equipe.model";
-
-import { Collaborateur } from "../../../../controller/model/collaborateur.model";
-import { CollaborateurService } from "../../../../controller/service/collaborateur.service";
 import { DatePipe } from "@angular/common";
+import {EquipesService} from '../../../service/equipes.service';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {Equipe} from '../../../model/equipe.model';
+import {Collaborateur} from '../../../model/collaborateur.model';
+import {MembreEquipe} from '../../../model/membre-equipe.model';
 
 @Component({
   selector: "app-equipe-create",

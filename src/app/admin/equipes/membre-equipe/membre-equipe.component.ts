@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {EquipesService} from '../../../../controller/service/equipes.service';
-import {CollaborateurService} from '../../../../controller/service/collaborateur.service';
-import {MembreEquipe} from '../../../../controller/model/membre-equipe.model';
-import {Collaborateur} from '../../../../controller/model/collaborateur.model';
-import {Equipe} from '../../../../controller/model/equipe.model';
+import {EquipesService} from '../../../service/equipes.service';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {MembreEquipe} from '../../../model/membre-equipe.model';
+import {Equipe} from '../../../model/equipe.model';
+
 
 @Component({
   selector: 'app-membre-equipe',

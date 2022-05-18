@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Equipe } from 'src/app/controller/model/equipe.model';
-import { EquipesService } from 'src/app/controller/service/equipes.service';
-import {Collaborateur} from '../../../../controller/model/collaborateur.model';
-import {CollaborateurService} from '../../../../controller/service/collaborateur.service';
-import {MembreEquipe} from '../../../../controller/model/membre-equipe.model';
+import {EquipesService} from '../../../service/equipes.service';
+import {Equipe} from '../../../model/equipe.model';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {MembreEquipe} from '../../../model/membre-equipe.model';
+import {Collaborateur} from '../../../model/collaborateur.model';
+
 
 @Component({
   selector: 'app-equipe-edit',
@@ -13,7 +14,8 @@ import {MembreEquipe} from '../../../../controller/model/membre-equipe.model';
 })
 export class EquipeEditComponent implements OnInit {
 
-  constructor(private messageService: MessageService, private service: EquipesService, private collaborateurService: CollaborateurService) { }
+  constructor(private messageService: MessageService, private service: EquipesService,
+              private collaborateurService: CollaborateurService) { }
 get selectedEquipe(): Equipe {
     return this.service.selectedEquipe;
 }

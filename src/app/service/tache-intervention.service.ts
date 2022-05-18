@@ -183,9 +183,7 @@ export class TacheInterventionService {
         }
       );
   }
-  get User(): User {
-    return this.collaborateurService.User;
-  }
+
   get items(): Array<TacheIntervention> {
     return this._items;
   }

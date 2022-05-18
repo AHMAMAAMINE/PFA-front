@@ -22,10 +22,10 @@ export class DashboardComponent implements OnInit {
       private tacheService: TacheInterventionService,
       private collabService: CollaborateurService
   ) { }
-  private demandesNum: number;
-  private tacheNum: number;
-  private collabNum: number;
-  private taches: Array<TacheIntervention>;
+  demandesNum: number;
+   tacheNum: number;
+   collabNum: number;
+   taches: Array<TacheIntervention>;
 
   get items(): Array<DemandeConge> {
     return this.demandeCongeService.items;
