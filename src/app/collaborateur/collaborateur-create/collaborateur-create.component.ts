@@ -1,7 +1,7 @@
-import { CollaborateurService } from "./../../../controller/service/collaborateur.service";
 import { MessageService } from "primeng/api";
-import { Collaborateur } from "./../../../controller/model/collaborateur.model";
 import { Component, OnInit } from "@angular/core";
+import {CollaborateurService} from '../../service/collaborateur.service';
+import {Collaborateur} from '../../model/collaborateur.model';
 
 @Component({
   selector: "app-collaborateur-create",

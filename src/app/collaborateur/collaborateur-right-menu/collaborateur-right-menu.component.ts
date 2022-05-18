@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AppComponent} from '../../../app.component';
-import {AdminMainComponent} from '../../admin/admin-main/admin-main.component';
 import {CollaborateurMainComponent} from '../collaborateur-main/collaborateur-main.component';
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-collaborateur-right-menu',

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ConfirmationService, MessageService} from 'primeng/api';
-import {TacheIntervention} from '../../../../controller/model/tache-intervention.model';
-import {TacheInterventionService} from '../../../../controller/service/tache-intervention.service';
+import {TacheIntervention} from '../../../model/tache-intervention.model';
+import {TacheInterventionService} from '../../../service/tache-intervention.service';
+
 
 @Component({
   selector: 'app-chef-equipe-tache-list',

@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {DemandeCongeService} from '../../../service/demande-conge.service';
 import {ConfirmationService, MessageService} from 'primeng/api';
+import {DemandeCongeService} from '../../../service/demande-conge.service';
+import {CollaborateurService} from '../../../service/collaborateur.service';
+import {DemandeConge} from '../../../model/demande-conge.model';
+import {Collaborateur} from '../../../model/collaborateur.model';
 
-import {DemandeCongeService} from '../../../model/demande-conge.service';
-import {Collaborateur} from '../../../../controller/model/collaborateur.model';
-import {CollaborateurService} from '../../../../controller/service/collaborateur.service';
+
 
 
 @Component({

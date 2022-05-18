@@ -6,9 +6,9 @@ import {
   transition,
   trigger,
 } from "@angular/animations";
-import { AppComponent } from "../../../app.component";
 
 import { CollaborateurMainComponent } from "../collaborateur-main/collaborateur-main.component";
+import {AppComponent} from '../../app.component';
 
 @Component({
   selector: "app-collaborateur-menu",

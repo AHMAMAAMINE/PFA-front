@@ -3,9 +3,10 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { DatePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { TacheInterventionService } from "../../../controller/service/tache-intervention.service";
-import { TacheIntervention } from "../../../controller/model/tache-intervention.model";
-import {Conseils} from '../../../controller/model/conseils.model';
+import {TacheInterventionService} from '../../service/tache-intervention.service';
+import {TacheIntervention} from '../../model/tache-intervention.model';
+import {Conseils} from '../../model/conseils.model';
+
 
 @Component({
   selector: "app-dashbord",

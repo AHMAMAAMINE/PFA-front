@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import {ConfirmationService, MessageService} from 'primeng/api';
-import { Collaborateur } from 'src/app/controller/model/collaborateur.model';
-import { CollaborateurService } from 'src/app/controller/service/collaborateur.service';
+import {Collaborateur} from '../../model/collaborateur.model';
+import {CollaborateurService} from '../../service/collaborateur.service';
+
 
 
 @Component({

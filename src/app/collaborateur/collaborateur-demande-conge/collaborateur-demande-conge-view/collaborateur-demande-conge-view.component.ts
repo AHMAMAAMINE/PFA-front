@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DemandeCongeService} from '../../../service/demande-conge.service';
-import {DemandeConge} from '../../../../controller/model/demande-conge.model';
+import {DemandeConge} from '../../../model/demande-conge.model';
 
 @Component({
   selector: 'app-collaborateur-demande-conge-view',

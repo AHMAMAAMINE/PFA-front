@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {DemandeCongeService} from '../../../controller/service/demande-conge.service';
-import {TacheInterventionService} from '../../../controller/service/tache-intervention.service';
-import {CollaborateurService} from '../../../controller/service/collaborateur.service';
+
 import {DatePipe} from '@angular/common';
-import {DemandeConge} from '../../../controller/model/demande-conge.model';
-import {TacheIntervention} from '../../../controller/model/tache-intervention.model';
+import {DemandeCongeService} from '../../service/demande-conge.service';
+import {TacheInterventionService} from '../../service/tache-intervention.service';
+import {CollaborateurService} from '../../service/collaborateur.service';
+import {TacheIntervention} from '../../model/tache-intervention.model';
+import {DemandeConge} from '../../model/demande-conge.model';
+
 
 @Component({
   selector: 'app-dashboard',
