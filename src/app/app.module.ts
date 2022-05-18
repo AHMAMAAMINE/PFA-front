@@ -156,11 +156,15 @@ import {EquipeEditComponent} from './admin/equipes/equipe-edit/equipe-edit.compo
 import {EquipeListComponent} from './admin/equipes/equipe-list/equipe-list.component';
 import {EquipeCreateComponent} from './admin/equipes/equipe-create/equipe-create.component';
 import {EquipesComponent} from './admin/equipes/equipes.component';
+import {AppErrorComponent} from './pages/app.error.component';
+import {AppNotfoundComponent} from './pages/app.notfound.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppErrorComponent,
+    AppNotfoundComponent,
     LoginComponent,
     RegisterComponent,
     UserComponent,

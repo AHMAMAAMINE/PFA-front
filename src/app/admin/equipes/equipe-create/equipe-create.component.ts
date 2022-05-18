@@ -6,6 +6,7 @@ import {CollaborateurService} from '../../../service/collaborateur.service';
 import {Equipe} from '../../../model/equipe.model';
 import {Collaborateur} from '../../../model/collaborateur.model';
 import {MembreEquipe} from '../../../model/membre-equipe.model';
+import {any} from 'codelyzer/util/function';
 
 @Component({
   selector: "app-equipe-create",
@@ -14,7 +15,7 @@ import {MembreEquipe} from '../../../model/membre-equipe.model';
   providers: [DatePipe],
 })
 export class EquipeCreateComponent implements OnInit {
-  private valorant: string;
+  public valorant: string;
   constructor(
     private messageService: MessageService,
     private service: EquipesService,
@@ -74,7 +75,8 @@ export class EquipeCreateComponent implements OnInit {
   date: string;
   valeur: string;
   added = false;
-  private values: string;
+  public values: string;
+  cols: any[];
   ngOnInit(): void {
     this.collaborateurService.filter();
       // .subscribe((data) => (this.collaborateurService.collaborateurs = data));

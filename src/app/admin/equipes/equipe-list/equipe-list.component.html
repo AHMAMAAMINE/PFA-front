@@ -17,7 +17,7 @@
             </p-toolbar>
 
             <p-table #dt [value]="equipes" [columns]="cols" [rows]="4" [paginator]="true" [globalFilterFields]="['ref','libelle','libellePaye']"
-                     [(selection)]="selectes" [rowHover]="true" dataKey="id"
+                     [(selection)]="selectedEquipe" [rowHover]="true" dataKey="id"
                      styleClass="p-datatable-customers"
                      currentPageReportTemplate="Showing {first} to {last} of {libelleRecords} entries" [showCurrentPageReport]="true">
                 <ng-template pTemplate="caption">
@@ -36,7 +36,7 @@
                         </th>
                         <th pSortableColumn="ref">ref <p-sortIcon field="ref"></p-sortIcon></th>
                         <th pSortableColumn="libelle">libelle <p-sortIcon field="libelle"></p-sortIcon></th>
-                       
+
                         <th></th>
                     </tr>
                 </ng-template>
@@ -47,7 +47,7 @@
                         </td>
                         <td>{{equipe.ref}}</td>
                         <td>{{equipe.libelle}}</td>
-                        
+
 
                         <td>
                             <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success p-mr-2" (click)="edit(equipe)"></button>
@@ -68,7 +68,7 @@
         <app-equipe-edit></app-equipe-edit>
         <app-equipe-view></app-equipe-view>
 
-        
+
         <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
     </div>
 </div>

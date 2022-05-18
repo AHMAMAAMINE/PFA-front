@@ -11,6 +11,7 @@ import {MembreEquipe} from '../../../model/membre-equipe.model';
   styleUrls: ['./equipe-view.component.scss']
 })
 export class EquipeViewComponent implements OnInit {
+  cols: any[];
 
   constructor(private messageService: MessageService, private service: EquipesService) { }
 

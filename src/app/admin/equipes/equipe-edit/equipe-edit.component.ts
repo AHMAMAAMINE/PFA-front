@@ -16,6 +16,7 @@ export class EquipeEditComponent implements OnInit {
 
   constructor(private messageService: MessageService, private service: EquipesService,
               private collaborateurService: CollaborateurService) { }
+  cols:any[];
 get selectedEquipe(): Equipe {
     return this.service.selectedEquipe;
 }

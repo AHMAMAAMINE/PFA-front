@@ -15,9 +15,9 @@ import {Conseils} from '../../model/conseils.model';
   providers: [DatePipe],
 })
 export class DashbordComponent implements OnInit {
-  private fullcalendarOptions = new Object();
-  private codeInter: boolean;
-  private events: any;
+  public fullcalendarOptions = new Object();
+  public  codeInter: boolean;
+  public events: any;
 
   constructor(
     private datePipe: DatePipe,
@@ -31,8 +31,8 @@ export class DashbordComponent implements OnInit {
   get events_service(): any {
     return this.service.events;
   }
-  private num1 :number;
-  private pourcentage : string;
+  public num1 :number;
+  public pourcentage : any;
   ngOnInit(): void {
     this.service.findAllInterventions();
     this.service.getInterventionConseils();
